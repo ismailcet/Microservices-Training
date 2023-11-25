@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: email-sms-service-kafka
+  datasource:
+    username: postgres
+    password: postgres123
+    url: jdbc:postgresql://localhost:5431/email
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+  kafka:
+    consumer:
+      auto-offset-reset: latest
+      bootstrap-servers: localhost:9092
+      group-id: email
+      topic:
+        name: register-user
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+server:
+  port: 0
+

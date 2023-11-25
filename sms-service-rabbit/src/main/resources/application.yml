@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: sms-service
+  datasource:
+    username: postgres
+    password: postgres123
+    url: jdbc:postgresql://localhost:5431/sms
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+server:
+  port: 0
+customer:
+  rabbitmq:
+    exchange: customer
+    email: email
+    sms: sms
+    routingKey: customerRoute
